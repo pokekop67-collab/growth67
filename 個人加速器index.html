@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#F2EDE8">
+<meta property="og:title" content="成長加速系統 — 與成功有約 × 納瓦爾寶典">
+<meta property="og:description" content="Covey 給你方向盤，Naval 給你引擎。兩者合一，成長又快又穩。">
+<title>成長加速系統 — 與成功有約 × 納瓦爾寶典</title>
+<style>
+:root {
+  --sage:#A8B5A2; --rose:#C4A6A6; --blue:#9BAFB5; --clay:#C4B5A5;
+  --mauve:#B5A5B5; --olive:#A5A88F; --cream:#F2EDE8; --warm:#E8E0D8;
+  --light:#F7F4F0; --dark:#5A5550; --text:#4A4540; --muted:#8A8580;
+  --divider:#D8D0C8; --white:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'PingFang TC','Heiti TC','Microsoft JhengHei','Segoe UI',sans-serif;
+  background:var(--light);color:var(--text);line-height:1.8;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ═══ NAVBAR ═══ */
+.navbar{
+  position:sticky;top:0;z-index:100;
+  background:rgba(247,244,240,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--divider);
+  padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;
+}
+.nav-logo{font-weight:800;font-size:1rem;color:var(--dark);letter-spacing:-.5px}
+.nav-logo em{font-style:normal;background:linear-gradient(135deg,var(--sage),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:.3rem}
+.nav-links a{
+  text-decoration:none;color:var(--muted);font-size:.82rem;padding:.4rem .9rem;
+  border-radius:20px;transition:all .25s;
+}
+.nav-links a:hover,.nav-links a.active{background:var(--warm);color:var(--dark)}
+.nav-ham{display:none;background:none;border:none;font-size:1.3rem;color:var(--dark);cursor:pointer;padding:4px}
+.nav-mob{
+  display:none;position:fixed;top:56px;left:0;right:0;
+  background:rgba(247,244,240,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--divider);flex-direction:column;padding:1rem 1.5rem;gap:.3rem;z-index:99;
+}
+.nav-mob.open{display:flex}
+.nav-mob a{text-decoration:none;color:var(--text);font-size:.9rem;padding:.7rem 1rem;border-radius:10px;transition:background .2s}
+.nav-mob a:hover{background:var(--warm)}
+
+/* ═══ HERO ═══ */
+.hero{
+  min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;padding:4rem 2rem;position:relative;overflow:hidden;
+  background:linear-gradient(165deg,var(--cream) 0%,var(--warm) 45%,#D8CFC5 100%);
+}
+.hero::before,.hero::after{content:'';position:absolute;border-radius:50%;animation:drift 12s ease-in-out infinite}
+.hero::before{top:-12%;right:-8%;width:500px;height:500px;background:radial-gradient(circle,rgba(168,181,162,.28) 0%,transparent 70%)}
+.hero::after{bottom:-8%;left:-5%;width:400px;height:400px;background:radial-gradient(circle,rgba(196,166,166,.22) 0%,transparent 70%);animation-direction:reverse;animation-duration:15s}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(25px,-15px) scale(1.04)}}
+.hero-badge{
+  padding:.4rem 1.6rem;border:1px solid var(--muted);border-radius:50px;
+  font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;
+  opacity:0;animation:up .8s ease .2s forwards;
+}
+.hero h1{
+  font-weight:900;font-size:clamp(2.2rem,5.5vw,4.2rem);line-height:1.3;color:var(--dark);margin-bottom:.8rem;
+  opacity:0;animation:up .8s ease .4s forwards;
+}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--sage),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{
+  font-size:clamp(.9rem,2vw,1.3rem);color:var(--muted);margin-bottom:2.5rem;max-width:500px;
+  opacity:0;animation:up .8s ease .55s forwards;font-style:italic;
+}
+.hero-books{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;opacity:0;animation:up .8s ease .7s forwards}
+.hb{padding:.8rem 1.6rem;border-radius:12px;font-size:.88rem;font-weight:500}
+.hb.c{background:rgba(168,181,162,.28);border:1px solid rgba(168,181,162,.45);color:#5A6B55}
+.hb.n{background:rgba(155,175,181,.28);border:1px solid rgba(155,175,181,.45);color:#4A6068}
+.scroll-arrow{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  background:none;border:none;font-size:1.6rem;color:var(--muted);cursor:pointer;
+  opacity:0;animation:up .8s ease .9s forwards,bounce 2.2s ease 2s infinite;
+}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+
+/* ═══ SECTIONS ═══ */
+.container{max-width:1100px;margin:0 auto;padding:0 2rem}
+section{padding:5rem 0}
+.sh{text-align:center;margin-bottom:3.5rem}
+.sn{font-size:3.5rem;font-weight:200;color:var(--divider);line-height:1}
+.st{font-weight:800;font-size:clamp(1.4rem,3vw,2.1rem);color:var(--dark);margin:.3rem 0}
+.ss{font-size:.88rem;color:var(--muted);max-width:420px;margin:0 auto}
+
+/* ═══ LOGIC ═══ */
+.logic-s{background:linear-gradient(180deg,var(--light),var(--cream))}
+.lb{
+  max-width:720px;margin:0 auto;background:var(--white);border-radius:20px;
+  padding:2.8rem 2.5rem;box-shadow:0 8px 36px rgba(90,85,80,.06);text-align:center;position:relative;
+}
+.lb::before{content:'\201C';position:absolute;top:-.5rem;left:1.8rem;font-size:6rem;font-family:Georgia,serif;color:var(--divider);line-height:1}
+.lb p{font-weight:500;font-size:1.1rem;line-height:2.1;color:var(--dark)}
+.hl{background:linear-gradient(transparent 55%,rgba(168,181,162,.3) 55%);font-weight:700}
+.lt{display:flex;gap:.8rem;justify-content:center;margin-top:1.5rem;flex-wrap:wrap}
+.ltg{padding:.55rem 1.2rem;border-radius:10px;font-size:.85rem;font-weight:500}
+.ltg.c{background:rgba(168,181,162,.16);color:#5A6B55}
+.ltg.n{background:rgba(155,175,181,.16);color:#4A6068}
+
+/* ═══ CARDS ═══ */
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
+.cd{
+  background:var(--white);border-radius:18px;padding:2.2rem 1.8rem;
+  box-shadow:0 4px 24px rgba(90,85,80,.05);position:relative;overflow:hidden;
+  transition:transform .4s,box-shadow .4s;
+}
+.cd:hover{transform:translateY(-5px);box-shadow:0 12px 40px rgba(90,85,80,.1)}
+.cd::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.cd.sage::before{background:linear-gradient(90deg,var(--sage),var(--olive))}
+.cd.rose::before{background:linear-gradient(90deg,var(--rose),var(--mauve))}
+.cd.blue::before{background:linear-gradient(90deg,var(--blue),#B8BFC4)}
+.cd.clay::before{background:linear-gradient(90deg,var(--clay),#C0B5A8)}
+.cd.mauve::before{background:linear-gradient(90deg,var(--mauve),var(--rose))}
+.cd.olive::before{background:linear-gradient(90deg,var(--olive),var(--sage))}
+.ce{font-size:2rem;margin-bottom:.8rem}
+.cl{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
+.ct{font-weight:800;font-size:1.12rem;color:var(--dark);margin-bottom:.2rem}
+.cf{font-size:.82rem;font-style:italic;color:var(--muted);margin-bottom:.9rem;padding-bottom:.9rem;border-bottom:1px solid var(--divider)}
+.cb{font-size:.88rem;line-height:1.9;color:#6A6560}
+.ctp{margin-top:1rem;padding:.8rem 1rem;background:var(--light);border-radius:10px;font-size:.82rem;color:var(--muted);border-left:3px solid;line-height:1.7}
+.cd.sage .ctp{border-color:var(--sage)}.cd.rose .ctp{border-color:var(--rose)}
+.cd.blue .ctp{border-color:var(--blue)}.cd.clay .ctp{border-color:var(--clay)}
+.cd.mauve .ctp{border-color:var(--mauve)}.cd.olive .ctp{border-color:var(--olive)}
+
+/* ═══ RENEWAL ═══ */
+.renewal-s{background:linear-gradient(180deg,var(--cream),var(--light))}
+.renewal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.rc{
+  background:var(--white);border-radius:16px;padding:2rem 1.5rem;text-align:center;
+  box-shadow:0 4px 20px rgba(90,85,80,.05);transition:transform .3s;
+}
+.rc:hover{transform:translateY(-4px)}
+.rc-emoji{font-size:2.2rem;margin-bottom:.7rem}
+.rc-label{font-weight:700;font-size:1.05rem;color:var(--dark);margin-bottom:1rem}
+.rc-body{display:flex;flex-direction:column;gap:.5rem;text-align:left}
+.ri{padding:.55rem .8rem;border-radius:8px;font-size:.82rem;line-height:1.55}
+.ri.c{background:rgba(168,181,162,.12);color:#5A6B55}
+.ri.n{background:rgba(155,175,181,.12);color:#4A6068}
+.ri strong{font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.6;display:block;margin-bottom:1px}
+
+/* ═══ ACTIONS ═══ */
+.action-grid{max-width:800px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.ac{
+  background:var(--white);border-radius:16px;padding:1.8rem 1.5rem;
+  box-shadow:0 4px 20px rgba(90,85,80,.05);display:flex;gap:1.2rem;align-items:flex-start;
+  transition:transform .3s;cursor:pointer;
+}
+.ac:hover{transform:translateX(5px)}
+.ac:active{transform:scale(.98)}
+.an{
+  flex-shrink:0;width:40px;height:40px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:var(--white);
+}
+.ac:nth-child(1) .an{background:var(--sage)}.ac:nth-child(2) .an{background:var(--blue)}
+.ac:nth-child(3) .an{background:var(--mauve)}.ac:nth-child(4) .an{background:var(--clay)}
+.ac h3{font-weight:700;font-size:.95rem;color:var(--dark);margin-bottom:.3rem}
+.ac p{font-size:.85rem;color:#6A6560;line-height:1.8}
+.ac .check{display:none;margin-left:auto;font-size:1.1rem;flex-shrink:0;align-self:center}
+.ac.done{background:rgba(168,181,162,.08)}
+.ac.done .check{display:block}
+.ac.done h3{text-decoration:line-through;color:var(--muted)}
+
+/* ═══ SUMMARY ═══ */
+.summary{background:linear-gradient(160deg,#5A5550,#6A6560,#5A5550);color:var(--white);text-align:center;padding:5rem 2rem}
+.summary .st{color:var(--cream)}
+.sq{font-weight:600;font-size:clamp(1.1rem,2.5vw,1.5rem);line-height:2.1;color:var(--warm);margin-top:1.8rem;max-width:650px;margin-left:auto;margin-right:auto}
+.sq em{font-style:normal;color:var(--sage);font-weight:700}
+.sf{margin-top:2.5rem;display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap}
+.sfr{font-size:.78rem;color:rgba(255,255,255,.42);display:flex;align-items:center;gap:.4rem}
+.sd{width:8px;height:8px;border-radius:50%}
+.sd.g{background:var(--sage)}.sd.b{background:var(--blue)}
+footer{text-align:center;padding:1.8rem;font-size:.75rem;color:var(--muted);background:var(--light)}
+
+/* ═══ SHARE ═══ */
+.share-btn{
+  position:fixed;right:24px;bottom:24px;width:48px;height:48px;border-radius:50%;
+  background:var(--dark);color:var(--white);border:none;font-size:1.2rem;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 20px rgba(90,85,80,.3);cursor:pointer;z-index:999;transition:transform .2s;
+}
+.share-btn:hover{transform:scale(1.08)}
+.share-btn:active{transform:scale(.92)}
+.share-toast{
+  position:fixed;bottom:84px;left:50%;transform:translateX(-50%);
+  background:var(--dark);color:var(--white);padding:.6rem 1.4rem;border-radius:10px;
+  font-size:.82rem;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;
+}
+.share-toast.show{opacity:1}
+
+/* ═══ ANIMATIONS ═══ */
+.fi{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.fi.v{opacity:1;transform:translateY(0)}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1024px){
+  .card-grid{grid-template-columns:repeat(2,1fr)}
+  .renewal-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-ham{display:block}
+  .navbar{padding:0 1.2rem}
+  section{padding:3.5rem 0}
+  .container{padding:0 1.25rem}
+  .hero{min-height:85vh;padding:3rem 1.5rem}
+  .hero-books{flex-direction:column;max-width:300px}
+  .hb{text-align:left}
+  .sh{margin-bottom:2rem}
+  .sn{font-size:2.5rem}
+  .lb{padding:1.8rem 1.4rem}
+  .lb::before{font-size:4.5rem;top:-.3rem;left:1rem}
+  .lt{flex-direction:column}
+  .card-grid{grid-template-columns:1fr;gap:1.2rem}
+  .cd{padding:1.6rem 1.3rem}
+  .cd:hover{transform:none;box-shadow:0 4px 24px rgba(90,85,80,.05)}
+  .renewal-grid{grid-template-columns:1fr 1fr;gap:1rem}
+  .rc{padding:1.4rem 1rem}
+  .action-grid{grid-template-columns:1fr;gap:1rem}
+  .ac{padding:1.3rem 1.2rem}
+  .ac:hover{transform:none}
+  .sf{flex-direction:column;gap:.5rem;align-items:center}
+  .summary{padding:3.5rem 1.5rem}
+  .share-btn{right:16px;bottom:16px;width:44px;height:44px}
+}
+@media(max-width:480px){
+  .hero h1{font-size:1.9rem}
+  .hero-sub{font-size:.85rem}
+  .renewal-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-logo">成長<em>加速</em></div>
+  <div class="nav-links">
+    <a href="#logic">核心邏輯</a><a href="#personal">個人根基</a>
+    <a href="#social">人際倍增</a><a href="#renewal">持續進化</a><a href="#action">行動清單</a>
+  </div>
+  <button class="nav-ham" onclick="document.getElementById('mn').classList.toggle('open')" aria-label="選單">☰</button>
+</nav>
+<div class="nav-mob" id="mn">
+  <a href="#logic" onclick="this.parentElement.classList.remove('open')">00 核心邏輯</a>
+  <a href="#personal" onclick="this.parentElement.classList.remove('open')">01 個人根基</a>
+  <a href="#social" onclick="this.parentElement.classList.remove('open')">02 人際倍增</a>
+  <a href="#renewal" onclick="this.parentElement.classList.remove('open')">03 持續進化</a>
+  <a href="#action" onclick="this.parentElement.classList.remove('open')">04 行動清單</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-badge">Personal Growth System</div>
+  <h1>成長<em>加速</em>系統</h1>
+  <p class="hero-sub">Covey gives you the steering wheel. Naval gives you the engine.</p>
+  <div class="hero-books">
+    <div class="hb c">📗 與成功有約 — Stephen Covey</div>
+    <div class="hb n">📘 納瓦爾寶典 — Naval Ravikant</div>
+  </div>
+  <button class="scroll-arrow" onclick="document.getElementById('logic').scrollIntoView({behavior:'smooth'})">↓</button>
+</section>
+
+<!-- LOGIC -->
+<section id="logic" class="logic-s">
+  <div class="container">
+    <div class="sh fi"><div class="sn">00</div><h2 class="st">核心整合邏輯</h2><p class="ss">兩套系統如何合而為一</p></div>
+    <div class="lb fi">
+      <p>Covey 告訴你<span class="hl">「做什麼」</span>——七個習慣的人生方向盤</p>
+      <p style="margin-top:.5rem">Naval 告訴你<span class="hl">「怎麼加速」</span>——用槓桿與心智模型放大成果</p>
+      <div class="lt"><span class="ltg c">🧭 方向 × 習慣 × 品格</span><span class="ltg n">🚀 槓桿 × 判斷 × 複利</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAL -->
+<section id="personal">
+  <div class="container">
+    <div class="sh fi"><div class="sn">01</div><h2 class="st">個人根基：先搞定自己</h2><p class="ss">Private Victory — 由內而外的改變</p></div>
+    <div class="card-grid">
+      <div class="cd sage fi">
+        <div class="ce">⚡</div><div class="cl">Habit 1 + Leverage</div>
+        <div class="ct">主動積極 × 高槓桿行動</div>
+        <div class="cf">Be Proactive + Focus on Leverage</div>
+        <div class="cb">主動積極不是盲目努力，而是把精力放在高槓桿的事情上。每做一件事前先問自己：「這件事能不能規模化？能不能在我睡覺時還在運作？」</div>
+        <div class="ctp">💡 用 AI 自動化報價、合約流程，就是用程式碼槓桿放大你的主動積極。</div>
+      </div>
+      <div class="cd rose fi">
+        <div class="ce">🎯</div><div class="cl">Habit 2 + Specific Knowledge</div>
+        <div class="ct">以終為始 × 專屬知識</div>
+        <div class="cf">Begin with the End in Mind + Find Your Edge</div>
+        <div class="cb">以終為始不只是設目標，更要問：「什麼事情對我來說像玩樂，對別人來說像工作？」那就是你無法被取代的專屬知識。</div>
+        <div class="ctp">💡 影像專業 ＋ AI 技術 ＋ 保險業務的跨界組合，就是別人很難複製的交叉優勢。</div>
+      </div>
+      <div class="cd blue fi">
+        <div class="ce">⏱</div><div class="cl">Habit 3 + Hourly Rate</div>
+        <div class="ct">要事第一 × 時薪思維</div>
+        <div class="cf">Put First Things First + Value Your Time</div>
+        <div class="cb">給自己設一個心理時薪。低於這個價值的事，盡量外包或自動化。把時間留給只有你能做、且有長期複利效果的事情。</div>
+        <div class="ctp">💡 修圖後製請助理、行政瑣事用 AI，精力集中在拍攝、客戶關係、業務開發。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<section id="social" style="background:var(--cream)">
+  <div class="container">
+    <div class="sh fi"><div class="sn">02</div><h2 class="st">人際倍增：讓關係成為複利</h2><p class="ss">Public Victory — 信任是最強的槓桿</p></div>
+    <div class="card-grid">
+      <div class="cd clay fi">
+        <div class="ce">🤝</div><div class="cl">Habit 4 + Long-term Games</div>
+        <div class="ct">雙贏思維 × 長期博弈</div>
+        <div class="cf">Think Win-Win + Play Long-term Games</div>
+        <div class="cb">跟你能長期合作的人做生意，複利會在信任上累積。不做一次性生意——每次互動都在累積信任資產。</div>
+        <div class="ctp">💡 一個長期合作的企業客戶，價值遠超十個一次性案件。</div>
+      </div>
+      <div class="cd mauve fi">
+        <div class="ce">👂</div><div class="cl">Habit 5 + Radical Honesty</div>
+        <div class="ct">知彼解己 × 誠實原則</div>
+        <div class="cf">Seek First to Understand + Be Honest</div>
+        <div class="cb">先傾聽客戶真正的需求，不急著推方案。同時保持誠實——如果某個方案不適合對方，直說。短期損失一筆，長期贏得聲譽槓桿。</div>
+        <div class="ctp">💡 聲譽是會產生複利的無形資產，一次誠實勝過十次推銷。</div>
+      </div>
+      <div class="cd olive fi">
+        <div class="ce">📡</div><div class="cl">Habit 6 + Media Leverage</div>
+        <div class="ct">統合綜效 × 媒體槓桿</div>
+        <div class="cf">Synergize + Zero Marginal Cost</div>
+        <div class="cb">攝影作品、教學內容、保險知識分享，都可以變成媒體槓桿——拍短影片、寫文章。一次創作，無限次觸及潛在客戶。</div>
+        <div class="ctp">💡 有影像專業是巨大優勢，用內容同時服務攝影與保險兩個事業。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RENEWAL -->
+<section id="renewal" class="renewal-s">
+  <div class="container">
+    <div class="sh fi"><div class="sn">03</div><h2 class="st">持續進化：讓成長自動運轉</h2><p class="ss">Habit 7 — Sharpen the Saw + Naval's Happiness System</p></div>
+    <div class="renewal-grid">
+      <div class="rc fi"><div class="rc-emoji">🏃</div><div class="rc-label">身體</div><div class="rc-body"><div class="ri c"><strong>Covey</strong>運動、充足休息、健康飲食</div><div class="ri n"><strong>Naval</strong>健康是最高優先，生病代價遠超任何收入</div></div></div>
+      <div class="rc fi"><div class="rc-emoji">🧠</div><div class="rc-label">心智</div><div class="rc-body"><div class="ri c"><strong>Covey</strong>持續閱讀、學習、寫作</div><div class="ri n"><strong>Naval</strong>讀基礎學科，用第一性原理思考</div></div></div>
+      <div class="rc fi"><div class="rc-emoji">💛</div><div class="rc-label">情感</div><div class="rc-body"><div class="ri c"><strong>Covey</strong>經營關係、同理心溝通</div><div class="ri n"><strong>Naval</strong>減少低質量社交，深耕高信任關係</div></div></div>
+      <div class="rc fi"><div class="rc-emoji">✨</div><div class="rc-label">靈性</div><div class="rc-body"><div class="ri c"><strong>Covey</strong>反思價值觀、冥想、親近自然</div><div class="ri n"><strong>Naval</strong>冥想練習、減少慾望、活在當下</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIONS -->
+<section id="action">
+  <div class="container">
+    <div class="sh fi"><div class="sn">04</div><h2 class="st">具體行動建議</h2><p class="ss">點擊可打勾完成 ✓</p></div>
+    <div class="action-grid">
+      <div class="ac fi" onclick="this.classList.toggle('done')"><div class="an">1</div><div><h3>每日複利檢查</h3><p>每天問自己：「今天做的事裡，哪些有長期複利效果？」沒有的話，重新調整優先級。</p></div><span class="check">✅</span></div>
+      <div class="ac fi" onclick="this.classList.toggle('done')"><div class="an">2</div><div><h3>建立個人媒體槓桿</h3><p>善用影像專業，把攝影心得、保險觀念、AI 工具應用拍成短影片。一次創作，同時服務兩個事業。</p></div><span class="check">✅</span></div>
+      <div class="ac fi" onclick="this.classList.toggle('done')"><div class="an">3</div><div><h3>打造專屬知識交叉點</h3><p>「懂影像 × 懂 AI × 懂保險」的人極少。用這個獨特定位讓你在兩個領域都脫穎而出。</p></div><span class="check">✅</span></div>
+      <div class="ac fi" onclick="this.classList.toggle('done')"><div class="an">4</div><div><h3>用時薪篩選一切</h3><p>能自動化就自動化，能外包就外包。精力集中在只有你能做的高價值活動。</p></div><span class="check">✅</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<section class="summary">
+  <div class="sn" style="color:rgba(255,255,255,.12)">∞</div>
+  <h2 class="st">一句話總結</h2>
+  <div class="sq"><em>Covey 給你正確的方向盤</em>，<br><em>Naval 給你引擎和燃料</em>。<br>方向對了再加速，你就會成長得又快又穩。</div>
+  <div class="sf"><div class="sfr"><span class="sd g"></span>The 7 Habits of Highly Effective People</div><div class="sfr"><span class="sd b"></span>The Almanack of Naval Ravikant</div></div>
+</section>
+
+<footer>Made with 🤎 — 莫蘭迪色系 × 成長系統 — 2026</footer>
+
+<button class="share-btn" onclick="doShare()" aria-label="分享">📤</button>
+<div class="share-toast" id="toast">已複製連結！可貼到 LINE 分享 📲</div>
+
+<script>
+const obs=new IntersectionObserver(es=>{es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('v'),i*80);obs.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.fi').forEach(e=>obs.observe(e));
+const nls=document.querySelectorAll('.nav-links a');
+const sids=['logic','personal','social','renewal','action'].map(id=>document.getElementById(id));
+const no=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){nls.forEach(l=>l.classList.remove('active'));const m=[...nls].find(l=>l.getAttribute('href')==='#'+e.target.id);if(m)m.classList.add('active')}})},{threshold:.25});
+sids.forEach(s=>{if(s)no.observe(s)});
+function doShare(){const u=location.href;if(navigator.share){navigator.share({title:'成長加速系統',text:'Covey 給你方向盤，Naval 給你引擎 🚀',url:u}).catch(()=>{})}else{navigator.clipboard.writeText(u).then(()=>{const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000)}).catch(()=>{})}}
+</script>
+</body>
+</html>
